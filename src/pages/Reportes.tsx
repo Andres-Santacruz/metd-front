@@ -18,6 +18,8 @@ import { Link } from "react-router-dom";
 import { BsEyeFill } from "react-icons/bs";
 import { getTitle } from "../helpers";
 
+import fakeImgPreview from "../assets/img/preview-fake.jpg";
+
 export const ReportesPage = () => {
   const [getCompanies, { data, error, loading }] = useCompaniesApi();
   const toast = useToast();
@@ -108,18 +110,30 @@ export const ReportesPage = () => {
         </Flex>
       </Flex>
       <Card>
-        <Grid
-          templateColumns={{ sm: "1fr", xl: "repeat(3, 1fr)" }}
-          gap="22px"
-          p={4}
-        >
-          <Card>
-            <CardHeader>Reportes</CardHeader>
-            <CardBody>
+        <Card>
+          <CardHeader>Reportes</CardHeader>
+          <CardBody>
+            <Grid
+              templateColumns={{ sm: "1fr", xl: "repeat(3, 1fr)" }}
+              gap="22px"
+              p={4}
+            >
               {data.informes.map(({ id, type }) => (
-                <Card key={id} border="1px solid #eae6e6">
+                <Card
+                  key={id}
+                  border="1px solid #eae6e6"
+                  _hover={{
+                    transform: "scale(1.1)",
+                  }}
+                >
                   <CardHeader>{getTitle(type)}</CardHeader>
-                  <CardBody></CardBody>
+                  <CardBody>
+                    <img
+                      src={fakeImgPreview}
+                      alt="img preview report"
+                      width="100%"
+                    />
+                  </CardBody>
                   <CardFooter>
                     <Button
                       as={Link}
@@ -132,9 +146,35 @@ export const ReportesPage = () => {
                   </CardFooter>
                 </Card>
               ))}
-            </CardBody>
-          </Card>
-        </Grid>
+
+              <Card
+                border="1px solid #eae6e6"
+                _hover={{
+                  transform: "scale(1.1)",
+                }}
+              >
+                <CardHeader>Retorno ARL</CardHeader>
+                <CardBody>
+                  <img
+                    src={fakeImgPreview}
+                    alt="img preview report"
+                    width="100%"
+                  />
+                </CardBody>
+                <CardFooter>
+                  <Button
+                    as={Link}
+                    to="/retorno-arl"
+                    leftIcon={<BsEyeFill />}
+                    colorScheme="blue"
+                  >
+                    Ver
+                  </Button>
+                </CardFooter>
+              </Card>
+            </Grid>
+          </CardBody>
+        </Card>
       </Card>
     </Flex>
   );

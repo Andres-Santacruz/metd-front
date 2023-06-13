@@ -1,91 +1,30 @@
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  Flex,
-  Spinner,
-  useToast,
-} from "@chakra-ui/react";
-import { useEffect, useRef } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useInformeApi } from "../fakeApi/useInformeApi";
+import { Card, CardBody, CardHeader, Flex } from "@chakra-ui/react";
+
 import ReactApexChart from "react-apexcharts";
-import { getTitle } from "../helpers";
+// import { getTitle } from "../helpers";
 
-export const OneReportePage = () => {
-  const ref = useRef(0);
+export const RetornoArlPage = () => {
+  const header = ["VH", "VM", "X"];
 
-  const { idInforme } = useParams();
-  const [getInforme, { data, error, loading }] = useInformeApi();
-  const navigate = useNavigate();
-  const toast = useToast();
-
-  useEffect(() => {
-    if (!idInforme) {
-      return navigate("/");
-    }
-
-    if (!Number(idInforme)) {
-      toast({
-        status: "error",
-        title: "Error",
-        position: "top-right",
-        duration: 4000,
-        description: "Url incorrecta",
-      });
-      return navigate("/");
-    }
-
-    if (ref.current === 0) {
-      getInforme(Number(idInforme));
-      ref.current = 1;
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [idInforme]);
-
-  useEffect(() => {
-    if (error) {
-      toast({
-        status: "error",
-        position: "top-right",
-        duration: 4000,
-        title: "ERROR",
-        description: error.message,
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [error]);
-
-  if (loading) {
-    return (
-      <Flex
-        direction="column"
-        pt={{ sm: "120px", md: "75px" }}
-        height="30vh"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Spinner size="xl" color="blue.200" />
-      </Flex>
-    );
-  }
-
-  if (data == null) return null;
-
-  console.log("data", data);
-
-  const header = Object.keys(data.chart[0]).filter(
-    (key) => key !== "MES" && key !== "OBSERVACION"
-  );
   console.log("header", header);
-  const meses = data.chart.map((info) => Number(info.MES));
+  const meses = [
+    "ENERO",
+    "FEBRERO",
+    "MARZO",
+    "ABRIL",
+    "MAYO",
+    "JUNIO",
+    "JULIO",
+    "AGOSTO",
+    "SEPTIEMBRE",
+    "OCTUBRE",
+    "NOVIEMBRE",
+    "DICIEMBRE",
+  ];
 
-  const porc = data.chart.map((info) =>
-    Number(info.X.replace("%", "").replace(/,/g, "."))
-  );
-  const firstP = data.chart.map((info) => Number(info[header[0]]));
-  const secondP = data.chart.map((info) => Number(info[header[1]]));
+  const porc = [0, 0, 1, 2, 5, 6, 7, 5, 5];
+  const firstP = [0, 0, 1, 2, 5, 6, 7, 5, 5];
+  const secondP = [0, 0, 1, 2, 5, 6, 7, 5, 5];
 
   console.log("porc", porc);
   console.log("firstP", firstP);
@@ -102,9 +41,7 @@ export const OneReportePage = () => {
       <Card>
         <CardHeader>
           INFORME DE{" "}
-          <span style={{ textTransform: "uppercase" }}>
-            {data.info.companyName || ""}
-          </span>
+          <span style={{ textTransform: "uppercase" }}>retorno arl</span>
         </CardHeader>
         <CardBody>
           <ReactApexChart
@@ -135,7 +72,7 @@ export const OneReportePage = () => {
                 curve: "smooth",
               },
               title: {
-                text: getTitle(data.info.type),
+                text: "Precios",
                 align: "center",
               },
               grid: {

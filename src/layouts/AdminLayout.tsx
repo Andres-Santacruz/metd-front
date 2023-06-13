@@ -29,6 +29,7 @@ import HomePage from "../pages/HomePage.js";
 import AddCompanyPage from "../pages/AddCompanyPage.js";
 import { ReportesPage } from "../pages/Reportes.js";
 import { OneReportePage } from "../pages/OneReportePage.js";
+import { RetornoArlPage } from "../pages/RetornoArlPage.js";
 
 interface IDocument extends HTMLElement {
   layout: string;
@@ -176,7 +177,7 @@ export default function AdminLayout() {
           </Portal>
 
           <PanelContent>
-            <div>
+            <div style={{ margin: "20px 40px" }}>
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/add-company" element={<AddCompanyPage />} />
@@ -185,6 +186,7 @@ export default function AdminLayout() {
                   path="/reporte/:idInforme"
                   element={<OneReportePage />}
                 />
+                <Route path="/retorno-arl" element={<RetornoArlPage />} />
                 <Route path="/new-user" element={<div>new user</div>} />
                 <Route
                   path="/user-settings/:identificationNumber"
