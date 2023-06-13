@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 // Chakra imports
 import {
   Button,
-  Flex,
+  // Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
   Input,
-  useColorModeValue,
+  // useColorModeValue,
   Spinner,
   Alert,
   AlertIcon,
@@ -34,7 +34,7 @@ function LoginPage() {
   const { login } = useGetUser();
   const navigate = useNavigate();
 
-  const bgForm = useColorModeValue("white", "navy.800");
+  // const bgForm = useColorModeValue("white", "navy.800");
   // const [form, setForm] = useState({ user: "", password: "" });
   const formik = useFormik({
     initialValues: {
@@ -87,33 +87,10 @@ function LoginPage() {
   return (
     <LoginLayout
       title="Bienvenido!"
-      description="Administra tus informes"
+      description="Ingresa y administra tus informes"
       image="https://www.italtronic.net/wp-content/uploads/2021/01/identidad_principal.jpg"
     >
-      <Flex
-        w="100%"
-        h="100%"
-        alignItems="center"
-        justifyContent="center"
-        mb="60px"
-        mt={{ base: "60px", md: "0px" }}
-      >
-        <Flex
-          zIndex="2"
-          direction="column"
-          w="445px"
-          background="transparent"
-          borderRadius="15px"
-          p="40px"
-          mx={{ base: "100px" }}
-          mb={{ base: "20px", md: "auto" }}
-          bg={bgForm}
-          boxShadow={useColorModeValue(
-            "0px 5px 14px rgba(0, 0, 0, 0.05)",
-            "unset"
-          )}
-        >
-          {/* <Text
+      {/* <Text
             fontSize="xl"
             color={textColor}
             fontWeight="bold"
@@ -196,105 +173,103 @@ function LoginPage() {
           >
             or
           </Text> */}
-          <form onSubmit={formik.handleSubmit}>
-            <FormControl
-              id="user"
-              mb={4}
-              isInvalid={Boolean(formik.errors.email && formik.touched.email)}
-            >
-              <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
-                Correo electrónico
-              </FormLabel>
-              <Input
-                name="email"
-                value={formik.values.email}
-                fontSize="sm"
-                ms="4px"
-                type="text"
-                placeholder="Ingrese usuario"
-                size="lg"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-              />
-              {formik.errors.email && formik.touched.email && (
-                <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
-              )}
-            </FormControl>
+      <form onSubmit={formik.handleSubmit}>
+        <FormControl
+          id="user"
+          mb={4}
+          isInvalid={Boolean(formik.errors.email && formik.touched.email)}
+        >
+          <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
+            Correo electrónico
+          </FormLabel>
+          <Input
+            name="email"
+            value={formik.values.email}
+            fontSize="sm"
+            ms="4px"
+            type="text"
+            placeholder="Ingrese usuario"
+            size="lg"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+          />
+          {formik.errors.email && formik.touched.email && (
+            <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+          )}
+        </FormControl>
 
-            <FormControl
-              id="password"
-              isInvalid={Boolean(
-                formik.errors.password && formik.touched.password
-              )}
-            >
-              <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
-                Contraseña
-              </FormLabel>
-              <Input
-                name="password"
-                value={formik.values.password}
-                fontSize="sm"
-                ms="4px"
-                type="password"
-                placeholder="Contraseña"
-                size="lg"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-              />
-              {formik.errors.password && formik.touched.password && (
-                <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
-              )}
-            </FormControl>
-            <FormControl isInvalid={Boolean(error)}>
-              {/* <FormControl display="flex" alignItems="center" mb="24px">
+        <FormControl
+          id="password"
+          isInvalid={Boolean(formik.errors.password && formik.touched.password)}
+        >
+          <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
+            Contraseña
+          </FormLabel>
+          <Input
+            name="password"
+            value={formik.values.password}
+            fontSize="sm"
+            ms="4px"
+            type="password"
+            placeholder="Contraseña"
+            size="lg"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+          />
+          {formik.errors.password && formik.touched.password && (
+            <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
+          )}
+        </FormControl>
+        <FormControl isInvalid={Boolean(error)}>
+          {/* <FormControl display="flex" alignItems="center" mb="24px">
               <Switch id="remember-login" colorScheme="blue" me="10px" />
               <FormLabel htmlFor="remember-login" mb="0" fontWeight="normal">
                 Remember me
               </FormLabel>
             </FormControl> */}
-              <Button
-                fontSize="10px"
-                variant="solid"
-                fontWeight="bold"
-                bg="black"
-                color="white"
-                w="100%"
-                h="45"
-                mb="20px"
-                _hover={{
-                  backgroundColor: "#444",
-                }}
-                mt={4}
-                type="submit"
-                isDisabled={loading}
-                display="flex"
-                alignItems="center"
-                gap={2}
-              >
-                {loading && <Spinner size="sm" />}
-                Iniciar sesión
-              </Button>
-              {error && showError && (
-                <Alert status="error" justifyContent="space-between">
-                  <Box display="flex" alignItems="center">
-                    <AlertIcon />
-                    <Box>
-                      <AlertTitle>Error!</AlertTitle>
-                      <AlertDescription>{error.message}</AlertDescription>
-                    </Box>
-                  </Box>
-                  <CloseButton
-                    alignSelf="flex-start"
-                    position="relative"
-                    right={0}
-                    top={0}
-                    onClick={onClose}
-                  />
-                </Alert>
-              )}
-            </FormControl>
-          </form>
-          {/* <Flex
+          <Button
+            fontSize="10px"
+            variant="solid"
+            fontWeight="bold"
+            bg="black"
+            color="white"
+            w="100%"
+            h="45"
+            mb="20px"
+            _hover={{
+              backgroundColor: "#444",
+            }}
+            mt={4}
+            type="submit"
+            isDisabled={loading}
+            display="flex"
+            alignItems="center"
+            gap={2}
+          >
+            {loading && <Spinner size="sm" />}
+            Iniciar sesión
+          </Button>
+          {error && showError && (
+            <Alert status="error" justifyContent="space-between">
+              <Box display="flex" alignItems="center">
+                <AlertIcon />
+                <Box>
+                  <AlertTitle>Error!</AlertTitle>
+                  <AlertDescription>{error.message}</AlertDescription>
+                </Box>
+              </Box>
+              <CloseButton
+                alignSelf="flex-start"
+                position="relative"
+                right={0}
+                top={0}
+                onClick={onClose}
+              />
+            </Alert>
+          )}
+        </FormControl>
+      </form>
+      {/* <Flex
             flexDirection="column"
             justifyContent="center"
             alignItems="center"
@@ -314,8 +289,6 @@ function LoginPage() {
               </Link>
             </Text>
           </Flex> */}
-        </Flex>
-      </Flex>
     </LoginLayout>
   );
 }

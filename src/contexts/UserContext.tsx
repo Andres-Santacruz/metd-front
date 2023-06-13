@@ -83,6 +83,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         user: {
           email: data.email,
           exp: data.exp,
+          rol: data.rol,
         },
       });
     };

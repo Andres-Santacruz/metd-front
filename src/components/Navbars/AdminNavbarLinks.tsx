@@ -50,7 +50,7 @@ export default function HeaderLinks(props: IHeaderLinksProps) {
   }
   return (
     <Flex
-      pe={{ sm: "0px", md: "16px" }}
+      pe={{ sm: "0px", md: "12px" }}
       w={{ sm: "100%", md: "auto" }}
       alignItems="center"
       flexDirection="row"

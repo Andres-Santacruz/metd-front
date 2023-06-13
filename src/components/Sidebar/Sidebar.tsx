@@ -43,6 +43,7 @@ import { FaHome } from "react-icons/fa";
 import { MdOutlineDashboard } from "react-icons/md";
 import { BsBuildingAdd } from "react-icons/bs";
 import { AiOutlineBarChart } from "react-icons/ai";
+import { useGetUser } from "../../hooks/useGetUser";
 
 // FUNCTIONS
 interface ISidebarProps {
@@ -51,6 +52,7 @@ interface ISidebarProps {
   display: string;
 }
 function Sidebar(props: ISidebarProps) {
+  const { user } = useGetUser();
   // to check for active links and opened collapses
   const location = useLocation();
 
@@ -90,6 +92,7 @@ function Sidebar(props: ISidebarProps) {
               w={{
                 sm: sidebarWidth === 275 ? "100%" : "77%",
                 xl: sidebarWidth === 275 ? "90%" : "70%",
+                md: sidebarWidth === 275 ? "80%" : "60%",
                 "2xl": sidebarWidth === 275 ? "95%" : "77%",
               }}
               bg={"transparent"}
@@ -247,37 +250,41 @@ function Sidebar(props: ISidebarProps) {
                     </HStack>
                   </ListItem>
                 </NavLink>
-                <NavLink to="/add-company">
-                  <ListItem
-                    // key={key}
-                    ms={sidebarWidth === 275 ? undefined : "10px"}
-                  >
-                    <HStack
-                      spacing={sidebarWidth === 275 ? "26px" : "8px"}
-                      py="5px"
-                      px={sidebarWidth === 275 ? "10px" : "0px"}
+
+                {user?.rol === "ADMIN" && (
+                  <NavLink to="/add-company">
+                    <ListItem
+                      // key={key}
+                      ms={sidebarWidth === 275 ? undefined : "10px"}
                     >
-                      <Icon
-                        as={BsBuildingAdd}
-                        // w={activeRoute(prop.path.toLowerCase()) ? "10px" : "6px"}
-                        // color={landing ? "white" : "blue.500"}
-                        display={sidebarWidth === 275 ? "block" : "none"}
-                      />
-                      <Text
-                        color={
-                          activeRoute("/add-company")
-                            ? activeColor
-                            : inactiveColor
-                        }
-                        /* fontWeight={
+                      <HStack
+                        spacing={sidebarWidth === 275 ? "26px" : "8px"}
+                        py="5px"
+                        px={sidebarWidth === 275 ? "10px" : "0px"}
+                      >
+                        <Icon
+                          as={BsBuildingAdd}
+                          // w={activeRoute(prop.path.toLowerCase()) ? "10px" : "6px"}
+                          // color={landing ? "white" : "blue.500"}
+                          display={sidebarWidth === 275 ? "block" : "none"}
+                        />
+                        <Text
+                          color={
+                            activeRoute("/add-company")
+                              ? activeColor
+                              : inactiveColor
+                          }
+                          /* fontWeight={
                       activeRoute(prop.path.toLowerCase()) ? "bold" : "normal"
                     } */
-                      >
-                        Agregar empresa
-                      </Text>
-                    </HStack>
-                  </ListItem>
-                </NavLink>
+                        >
+                          Agregar empresa
+                        </Text>
+                      </HStack>
+                    </ListItem>
+                  </NavLink>
+                )}
+
                 <NavLink to="/reportes">
                   <ListItem
                     // key={key}

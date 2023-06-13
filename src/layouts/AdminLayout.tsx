@@ -8,7 +8,7 @@ import "../assets/css/plugin-styles.css";
 // import Configurator from "../components/Configurator/Configurator";
 import Footer from "../components/Footer/Footer";
 import MainPanel from "../components/Layout/MainPanel";
-import PanelContainer from "../components/Layout/PanelContainer";
+// import PanelContainer from "../components/Layout/PanelContainer";
 import PanelContent from "../components/Layout/PanelContent";
 import AdminNavbar from "../components/Navbars/AdminNavbar";
 import Sidebar from "../components/Sidebar/Sidebar";
@@ -127,7 +127,7 @@ export default function AdminLayout() {
   (document.documentElement as IDocument).layout = "admin";
   // Chakra Color Mode
   return (
-    <Box>
+    <Box maxWidth="100%">
       <SidebarContext.Provider
         value={{
           sidebarWidth,
@@ -139,7 +139,7 @@ export default function AdminLayout() {
         <Box
           minH={bgBoxHeight}
           h="100% !important"
-          w="100%"
+          w="100% !important"
           position="absolute"
           bg={bgBoxColor}
           top="0"
@@ -176,7 +176,7 @@ export default function AdminLayout() {
           </Portal>
 
           <PanelContent>
-            <PanelContainer>
+            <div>
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/add-company" element={<AddCompanyPage />} />
@@ -192,7 +192,7 @@ export default function AdminLayout() {
                 />
                 <Route path="*" element={<div children="no found" />} />
               </Routes>
-            </PanelContainer>
+            </div>
           </PanelContent>
 
           <Box>

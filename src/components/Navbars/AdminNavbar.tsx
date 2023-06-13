@@ -118,7 +118,7 @@ export default function AdminNavbar(props: IAdminNavbarProps) {
       minH="75px"
       justifyContent={{ xl: "center" }}
       lineHeight="25.6px"
-      mx="auto"
+      // mx="auto"
       mt={secondaryMargin}
       pb="8px"
       left={document.documentElement.dir === "rtl" ? "30px" : ""}
@@ -135,7 +135,7 @@ export default function AdminNavbar(props: IAdminNavbarProps) {
       w={{ sm: "calc(100vw - 30px)", xl: "calc(100vw - 75px - 275px)" }}
     >
       <Flex
-        w="100%"
+        w="90%"
         flexDirection={{
           sm: "column",
           md: "row",
@@ -178,7 +178,7 @@ export default function AdminNavbar(props: IAdminNavbarProps) {
         <HamburgerIcon
           w="100px"
           h="20px"
-          ms="20px"
+          ms="10px"
           color="#fff"
           cursor="pointer"
           display={{ sm: "none", xl: "block" }}
@@ -187,7 +187,7 @@ export default function AdminNavbar(props: IAdminNavbarProps) {
             setToggleSidebar(!toggleSidebar);
           }}
         />
-        <Box ms="auto" w={{ sm: "100%", md: "unset" }}>
+        <Box ms="auto" w={{ sm: "80%", md: "unset" }}>
           <AdminNavbarLinks
             onOpen={props.onOpen}
             logoText={props.logoText}

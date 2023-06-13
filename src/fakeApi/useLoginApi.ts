@@ -4,7 +4,7 @@ import { API } from "../api";
 
 interface IUserLogin {
   token: string;
-  payload: { email: string; exp: number };
+  payload: { email: string; exp: number; rol: "ADMIN" | "USER" };
 }
 
 type TLogin =
@@ -17,7 +17,7 @@ type TLogin =
       data: {
         email: string;
         name: string;
-        rol: string;
+        rol: "ADMIN" | "USER";
         exp: number;
         token: string;
       };
@@ -61,6 +61,7 @@ export const useLoginApi = (): [
       payload: {
         email: dataLogin.email,
         exp: dataLogin.exp,
+        rol: dataLogin.rol,
       },
       token: dataLogin.token,
     });

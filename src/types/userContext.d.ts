@@ -1,6 +1,7 @@
 export interface TPayload {
   email: string;
   exp: number;
+  rol: "ADMIN" | "USER";
 }
 
 export interface IUser {
