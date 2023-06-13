@@ -60,7 +60,7 @@ export const ReportesPage = () => {
   if (data == null) return null;
   console.log("data", data);
   return (
-    <Flex direction="column" pt={{ sm: "120px", md: "75px" }}>
+    <Flex direction="column" pt={{ sm: "120px", md: "75px" }} m={8}>
       <Flex
         direction={{ sm: "column", md: "row" }}
         mb="24px"
