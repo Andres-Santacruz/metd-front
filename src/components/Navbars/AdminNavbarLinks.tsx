@@ -1,12 +1,11 @@
 // Chakra Imports
 import {
-  Button,
   Flex,
   Text,
   Stack,
   Box,
   useColorMode,
-  useColorModeValue,
+  // useColorModeValue,
   Menu,
   MenuButton,
   MenuList,
@@ -19,7 +18,6 @@ import {
   ChakraLogoDark,
   ArgonLogoLight,
   ChakraLogoLight,
-  ProfileIcon,
 } from "../Icons/Icons";
 
 // import { ItemContent } from "../Menu/ItemContent";
@@ -29,7 +27,7 @@ import { SidebarResponsive } from "../Sidebar/Sidebar";
 // import routes from "../../routes";
 import { ReactElement } from "react";
 import { useGetUser } from "../../hooks/useGetUser";
-import { RiFileUserFill, RiUser2Line, RiUserFill } from "react-icons/ri";
+import { RiUserFill } from "react-icons/ri";
 
 interface IHeaderLinksProps {
   variant?: string;
@@ -42,17 +40,15 @@ interface IHeaderLinksProps {
 }
 
 export default function HeaderLinks(props: IHeaderLinksProps) {
-  const { fixed, scrolled, secondary, ...rest } = props;
+  const { secondary, ...rest } = props;
   const { user, logout } = useGetUser();
   const { colorMode } = useColorMode();
 
   // Chakra Color Mode
-  const navbarIconColor1 = useColorModeValue("gray.700", "gray.200");
-  const navbarIconColor2 = useColorModeValue("white", "gray.200");
-  let navbarIcon = fixed && scrolled ? navbarIconColor1 : navbarIconColor2;
-  if (secondary) {
-    navbarIcon = "white";
-  }
+  /* const navbarIconColor1 = useColorModeValue("gray.700", "gray.200");
+  const navbarIconColor2 = useColorModeValue("white", "gray.200"); */
+  // const navbarIcon = fixed && scrolled ? navbarIconColor1 : navbarIconColor2;
+
   return (
     <Flex
       pe={{ sm: "0px", md: "12px" }}
@@ -135,7 +131,7 @@ export default function HeaderLinks(props: IHeaderLinksProps) {
           </Stack>
         }
         colorMode={colorMode}
-        secondary={props.secondary}
+        secondary={secondary}
         // routes={routes}
         {...rest}
       />
