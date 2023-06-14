@@ -358,7 +358,9 @@ export const WizardOwn = () => {
             ref={accountTab}
             _focus={{}}
             w={{ sm: "120px", md: "250px", lg: "300px" }}
-            isDisabled={Boolean(!formik.isValid && !formik.values.businessName)}
+            isDisabled={Boolean(
+              !formik.isValid || formik.values.businessName === ""
+            )}
             onClick={(e) => {
               e.preventDefault();
               console.log("formik.isValid", formik.isValid);
@@ -498,6 +500,7 @@ export const WizardOwn = () => {
                         >
                           <FormLabel>Nombre comercial de la empresa</FormLabel>
                           <Input
+                            variant="authSecondary"
                             type="text"
                             {...formik.getFieldProps("comercialName")}
                             placeholder="Ingrese nombre comercial"
@@ -516,6 +519,7 @@ export const WizardOwn = () => {
                         >
                           <FormLabel>Razón social</FormLabel>
                           <Input
+                            variant="authSecondary"
                             type="text"
                             {...formik.getFieldProps("businessName")}
                             placeholder="Ingrese razón social"
@@ -533,6 +537,7 @@ export const WizardOwn = () => {
                         >
                           <FormLabel>NIT</FormLabel>
                           <Input
+                            variant="authSecondary"
                             type="text"
                             {...formik.getFieldProps("nit")}
                             placeholder="Nit de la compañía"
@@ -556,6 +561,7 @@ export const WizardOwn = () => {
                           >
                             <FormLabel>Departamento</FormLabel>
                             <Input
+                              variant="authSecondary"
                               type="text"
                               {...formik.getFieldProps("departament")}
                               placeholder="Ingrese departamento"
@@ -573,6 +579,7 @@ export const WizardOwn = () => {
                           >
                             <FormLabel>Ciudad</FormLabel>
                             <Input
+                              variant="authSecondary"
                               type="text"
                               {...formik.getFieldProps("city")}
                               placeholder="Ingrese cuidad"
@@ -595,6 +602,7 @@ export const WizardOwn = () => {
                           >
                             <FormLabel>Dirección</FormLabel>
                             <Input
+                              variant="authSecondary"
                               type="text"
                               {...formik.getFieldProps("address")}
                               placeholder="Ingrese dirección"
@@ -613,6 +621,7 @@ export const WizardOwn = () => {
                           >
                             <FormLabel>Teléfono</FormLabel>
                             <Input
+                              variant="authSecondary"
                               type="text"
                               {...formik.getFieldProps("phoneNumber")}
                               placeholder="Ingrese teléfono"
@@ -941,6 +950,7 @@ export const WizardOwn = () => {
                     >
                       <FormLabel>Nombres</FormLabel>
                       <Input
+                        variant="authSecondary"
                         type="text"
                         {...formikUser.getFieldProps("name")}
                         placeholder="Nombre de usuario"
@@ -959,6 +969,7 @@ export const WizardOwn = () => {
                     >
                       <FormLabel>Apellidos</FormLabel>
                       <Input
+                        variant="authSecondary"
                         type="text"
                         placeholder="Apellido de usuario"
                         {...formikUser.getFieldProps("surname")}
@@ -984,6 +995,7 @@ export const WizardOwn = () => {
                       >
                         <FormLabel>Teléfono</FormLabel>
                         <Input
+                          variant="authSecondary"
                           type="text"
                           {...formikUser.getFieldProps("phoneNumberUser")}
                           placeholder="Teléfono del usuario"
@@ -1001,6 +1013,7 @@ export const WizardOwn = () => {
                       >
                         <FormLabel>Correo</FormLabel>
                         <Input
+                          variant="authSecondary"
                           type="email"
                           {...formikUser.getFieldProps("email")}
                           placeholder="Ingrese correo electrónico"
@@ -1027,6 +1040,7 @@ export const WizardOwn = () => {
                       >
                         <FormLabel>Contraseña</FormLabel>
                         <Input
+                          variant="authSecondary"
                           type="password"
                           {...formikUser.getFieldProps("password")}
                           placeholder="Ingrese contraseña"
@@ -1045,6 +1059,7 @@ export const WizardOwn = () => {
                       >
                         <FormLabel>Confirmar contraseña</FormLabel>
                         <Input
+                          variant="authSecondary"
                           type="password"
                           {...formikUser.getFieldProps("confirmPassword")}
                           placeholder="Repita contraseña"
