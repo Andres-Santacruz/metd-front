@@ -24,6 +24,7 @@ const ROUTES: { [key: string]: string } = {
   "add-company": "Agregar compañía",
   "": "",
   reporte: "Ver reporte",
+  "retorno-arl": "Retorno ARL",
 };
 export const getRouteName = (route: string): string => {
   const routeName = ROUTES[route] as string | undefined;

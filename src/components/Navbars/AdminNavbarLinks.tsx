@@ -7,6 +7,10 @@ import {
   Box,
   useColorMode,
   useColorModeValue,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from "@chakra-ui/react";
 // Assets
 // Custom Icons
@@ -19,12 +23,13 @@ import {
 } from "../Icons/Icons";
 
 // import { ItemContent } from "../Menu/ItemContent";
-import { SearchBar } from "./SearchBar/SearchBar";
+// import { SearchBar } from "./SearchBar/SearchBar";
 import { SidebarResponsive } from "../Sidebar/Sidebar";
 // import { NavLink } from "react-router-dom";
 // import routes from "../../routes";
 import { ReactElement } from "react";
 import { useGetUser } from "../../hooks/useGetUser";
+import { RiFileUserFill, RiUser2Line, RiUserFill } from "react-icons/ri";
 
 interface IHeaderLinksProps {
   variant?: string;
@@ -55,29 +60,58 @@ export default function HeaderLinks(props: IHeaderLinksProps) {
       alignItems="center"
       flexDirection="row"
     >
-      <SearchBar me="18px" />
+      {/* <SearchBar me="18px" /> */}
       {/* <NavLink to="/auth/signin"> */}
       {user && (
-        <Button
-          ms="0px"
-          px="0px"
-          me={{ sm: "2px", md: "16px" }}
-          color={navbarIcon}
-          variant="no-effects"
-          rightIcon={
-            document.documentElement.dir ? undefined : (
-              <ProfileIcon color={navbarIcon} w="22px" h="22px" me="0px" />
-            )
-          }
-          leftIcon={
-            document.documentElement.dir ? (
-              <ProfileIcon color={navbarIcon} w="22px" h="22px" me="0px" />
-            ) : undefined
-          }
-          onClick={() => logout()}
-        >
-          <Text display={{ sm: "none", md: "flex" }}>Cerrar sesión</Text>
-        </Button>
+        <Menu>
+          <MenuButton>
+            <Text
+              fontSize="lg"
+              color="white"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              textTransform="capitalize"
+              gap="2"
+            >
+              <RiUserFill />
+              {user?.email.split("@")[0]}
+            </Text>
+          </MenuButton>
+          <MenuList>
+            <MenuItem onClick={() => logout()}>
+              <Text display={{ sm: "none", md: "flex" }}>Cerrar sesión</Text>
+
+              {/*  <Button
+                ms="0px"
+                px="0px"
+                me={{ sm: "2px", md: "16px" }}
+                color={"blue"}
+                // variant="no-effects"
+                rightIcon={
+                  document.documentElement.dir ? undefined : (
+                    <ProfileIcon
+                      color={navbarIcon}
+                      w="22px"
+                      h="22px"
+                      me="0px"
+                    />
+                  )
+                }
+                leftIcon={
+                  document.documentElement.dir ? (
+                    <ProfileIcon
+                      color={navbarIcon}
+                      w="22px"
+                      h="22px"
+                      me="0px"
+                    />
+                  ) : undefined
+                }
+              ></Button> */}
+            </MenuItem>
+          </MenuList>
+        </Menu>
       )}
       {/* </NavLink> */}
       <SidebarResponsive

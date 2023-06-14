@@ -72,7 +72,7 @@ export const RetornoArlPage = () => {
                 curve: "smooth",
               },
               title: {
-                text: "Precios",
+                text: "Retorno ARL",
                 align: "center",
               },
               grid: {

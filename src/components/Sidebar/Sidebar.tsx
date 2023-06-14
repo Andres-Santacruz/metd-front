@@ -79,7 +79,7 @@ function Sidebar(props: ISidebarProps) {
       <Box>
         {/* acordiantion */}
 
-        <Accordion allowToggle>
+        <Accordion allowToggle defaultIndex={[0]}>
           <AccordionItem border="none">
             <AccordionButton
               display="flex"
