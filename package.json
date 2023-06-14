@@ -21,6 +21,7 @@
     "apexcharts": "3.41.0",
     "formik": "2.4.1",
     "framer-motion": "^10.12.16",
+    "lottie-react": "2.4.0",
     "react": "^18.2.0",
     "react-apexcharts": "1.4.0",
     "react-custom-scrollbars-2": "4.5.0",
