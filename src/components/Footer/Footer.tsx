@@ -40,21 +40,21 @@ export default function Footer() {
           xl: "start",
         }}
         mb={{ base: "20px", xl: "0px" }}
+        zIndex={1000}
       >
         &copy; {new Date().getFullYear()},{" "}
-        <Text as="span">
-          {document.documentElement.dir === "rtl"
-            ? " مصنوع من ❤️ بواسطة"
-            : "Hecho con ❤️ por "}
-        </Text>
+        <Text as="span">Hecho con ❤️ por</Text>{" "}
         <Link
           color="blue.400"
           href="https://www.namtrikdev.co/"
           target="_blank"
+          cursor="pointer"
         >
-          {document.documentElement.dir === "rtl"
-            ? " توقيت الإبداعية"
-            : "Namtrik Development"}
+          Namtrik Development
+        </Link>{" "}
+        <Text as="span">y</Text>{" "}
+        <Link href="#" display="inline-block" color="blue.400">
+          Metd
         </Link>
       </Text>
     </Flex>
