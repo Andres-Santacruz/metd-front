@@ -29,7 +29,7 @@ function LoginLayout({ children }: { children: React.ReactNode }) {
             right="0px"
           >
             <Flex
-              bg="linear-gradient(180deg, #3182CE 0%, #63B3ED 100%)"
+              bg="linear-gradient(180deg, #2d538b 0%, #2d538b 100%)"
               justify="center"
               align="end"
               w="100%"

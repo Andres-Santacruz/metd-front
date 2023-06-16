@@ -24,6 +24,7 @@ import {
   Flex,
   // Link,
   useColorModeValue,
+  Image,
 } from "@chakra-ui/react";
 // Assets
 import { useEffect, useState } from "react";
@@ -32,6 +33,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useLoginApi } from "../fakeApi/useLoginApi";
 import { useGetUser } from "../hooks/useGetUser";
+
+import logoMetd from "../assets/img/logo.png";
 // import { useMutation } from "@apollo/client";
 // import { ILoginData, LOGIN } from "../../../graphql/mutations/userMutations";
 
@@ -63,7 +66,7 @@ function LoginPage() {
 
   const [showError, setShowError] = useState(false);
   const textColor = useColorModeValue("gray.400", "white");
-  const titleColor = useColorModeValue("blue.500", "blue.500");
+  const titleColor = useColorModeValue("#2d538b", "blue.500");
 
   useEffect(() => {
     if (data) {
@@ -100,6 +103,23 @@ function LoginPage() {
       description="Ingresa y administra tus informes"
       image="https://www.italtronic.net/wp-content/uploads/2021/01/identidad_principal.jpg" */
     >
+      <Box
+        textAlign="center"
+        position="absolute"
+        mt={12}
+        left="50%"
+        zIndex={100}
+        transform={"translate(-50%)"}
+      >
+        <Image
+          src={logoMetd}
+          width={"80px"}
+          height={"80px"}
+          display="inline-block"
+          border="4px solid #f7fafc"
+          borderRadius="100%"
+        />
+      </Box>
       <Flex
         w="100%"
         h="100%"
@@ -140,7 +160,7 @@ function LoginPage() {
               mb="24px"
             >
               <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
-                Correo
+                Correo electrónico
               </FormLabel>
               <Input
                 variant="authSecondary"
@@ -162,7 +182,7 @@ function LoginPage() {
               mb="24px"
             >
               <FormLabel ms="4px" fontSize="sm" fontWeight="normal">
-                contraseña
+                Contraseña
               </FormLabel>
               <Input
                 variant="authSecondary"
@@ -198,7 +218,8 @@ function LoginPage() {
             <LightMode>
               <Button
                 fontSize="10px"
-                colorScheme="blue"
+                bg="#2d538b"
+                color="white"
                 fontWeight="bold"
                 w="100%"
                 h="45"
