@@ -106,7 +106,7 @@ function LoginPage() {
       <Box
         textAlign="center"
         position="absolute"
-        mt={12}
+        mt={{ sm: -6, md: 4, lg: 8 }}
         left="50%"
         zIndex={100}
         transform={"translate(-50%)"}
